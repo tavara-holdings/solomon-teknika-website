@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#1B2A4A"/>
-  <text x="16" y="23" font-family="system-ui,sans-serif" font-weight="800" font-size="20" fill="#F97316" text-anchor="middle">ST</text>
+  <!-- Solid navy background — no transparency -->
+  <rect width="32" height="32" rx="7" fill="#1B2A4A"/>
+  <!-- Diamond mark — top half white, bottom half orange -->
+  <polygon points="16,5 24,14 16,18 8,14" fill="white" opacity="0.95"/>
+  <polygon points="16,18 24,14 16,27 8,14" fill="#F97316"/>
 </svg>

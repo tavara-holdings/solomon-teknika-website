@@ -60,6 +60,7 @@ All TAVARA HOLDINGS standards live in `05 - STANDARDS/`. Reference, do not resta
 | Deploy protocol, CAB, rollback | `05 - STANDARDS/PROCESS/DEPLOY-PROTOCOL.md` |
 | CR naming, audit format, session log | `05 - STANDARDS/PROCESS/PROCESS-STANDARDS.md` |
 | SB7 StoryBrand framework | `05 - STANDARDS/FRAMEWORKS/SB7-STORYBRAND.md` |
+| BLAS X framework (SOLTEK operating methodology) | `05 - STANDARDS/FRAMEWORKS/BLAS-X-FRAMEWORK.md` |
 | OPXIS framework (refer leads to OPTIMA PRAXIS) | `05 - STANDARDS/FRAMEWORKS/OPXIS-FRAMEWORK.md` |
 
 ---

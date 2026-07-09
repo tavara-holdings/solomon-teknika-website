@@ -598,7 +598,7 @@
                     <p style="margin-bottom: 28px; line-height: 1.7;">Multi-year infrastructure-grade products that compound. Built once, operated forever, never sold. The shared keel under every TAVARA vertical.</p>
                     <div style="font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px;">Live today</div>
                     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; line-height: 1.85;">
-                        <li><strong>HanapDok</strong> - healthcare provider finder for the Filipino diaspora &middot; 408,000+ providers &middot; 70+ countries</li>
+                        <li><strong>HanapDok</strong> - healthcare provider finder for the Filipino diaspora &middot; <span data-hanapdok="label_global">408,000+</span> providers &middot; <span data-hanapdok="label_countries">70+</span> countries</li>
                         <li><strong>KOMUNITI</strong> - premium HOA management with Niti AI &middot; DHSUD-aligned tier ladder</li>
                         <li><strong>BLUEWHALE</strong> - autonomous infrastructure monitoring &middot; runs on every TAVARA platform</li>
                         <li><strong>AIRA</strong> - AI compliance assessment &middot; 507 questions &middot; 27 jurisdictions</li>
@@ -649,8 +649,8 @@
                     <h3>HanapDok</h3>
                     <div class="tagline">Healthcare Provider Finder</div>
                     <div class="market">For the Filipino diaspora &middot; 70+ countries</div>
-                    <p class="desc">Healthcare provider finder for Filipinos worldwide. Find the right doctor, anywhere. 408,000+ providers indexed across 70+ countries.</p>
-                    <div class="app-meta"><span class="app-meta-item">hanapdok.com</span><span class="app-meta-item">408K+ providers</span><span class="app-meta-item">70+ countries</span></div>
+                    <p class="desc">Healthcare provider finder for Filipinos worldwide. Find the right doctor, anywhere. <span data-hanapdok="label_global">408,000+</span> providers indexed across <span data-hanapdok="label_countries">70+</span> countries.</p>
+                    <div class="app-meta"><span class="app-meta-item">hanapdok.com</span><span class="app-meta-item"><span data-hanapdok="label_global">408K+</span> providers</span><span class="app-meta-item"><span data-hanapdok="label_countries">70+</span> countries</span></div>
                 </div>
                 <div class="app-card">
                     <div class="app-status status-live"><span class="dot"></span> LIVE</div>
@@ -927,6 +927,30 @@
 
     <!-- NIKA chatbot JS moved to main.js -->
 
+<script>
+(function(){
+  var STATS_URL = 'https://hanapdok.com/api/public/stats';
+  var CACHE_KEY = 'hd_stats';
+  var CACHE_TTL = 3600000;
+  function applyStats(d) {
+    document.querySelectorAll('[data-hanapdok]').forEach(function(el) {
+      var k = el.getAttribute('data-hanapdok');
+      if (d[k] !== undefined) el.textContent = d[k];
+    });
+  }
+  try {
+    var c = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+    if (c && c._ts && (Date.now() - c._ts) < CACHE_TTL) { applyStats(c); return; }
+  } catch(e) {}
+  fetch(STATS_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      try { d._ts = Date.now(); sessionStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch(e) {}
+      applyStats(d);
+    })
+    .catch(function() {});
+})();
+</script>
 </body>
 </html>
 
